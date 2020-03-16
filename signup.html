@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+      <!--Import materialize.css-->
+      <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+       <link type="text/css" rel="stylesheet" href="css/custom.css"  media="screen,projection"/>
+       <link href='font-awesome/css/font-awesome.css' rel='stylesheet'>
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+
+    <body>
+         <div class="navbar-fixed">
+          <nav>
+            <div class="nav-wrapper">
+              <a href="#" data-activates="slide-out" class="button-collapse"><strong></strong></a><span> Sign Up</span>
+             
+            </div>
+          </nav>
+        </div>
+  <!-- <div class="container"> -->
+  <div class="row">
+    <section>
+        <div class="wizard">
+            <div class="wizard-inner">
+                <div class="connecting-line"></div>
+                <ul class="nav nav-tabs" role="tablist">
+
+                    <li role="presentation" class="active">
+                        <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Personal Details">
+                            <span class="round-tab">
+                                <i class="fa fa-user"></i>
+                            </span>
+                        </a>
+                    </li>
+
+                    <li role="presentation" class="disabled">
+                        <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Account Details">
+                            <span class="round-tab">
+                                <i class="fa fa-lock"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li role="presentation" class="disabled">
+                        <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Profile Image">
+                            <span class="round-tab">
+                                <i class="fa fa-image"></i>
+                            </span>
+                        </a>
+                    </li>
+
+                    <li role="presentation" class="disabled">
+                        <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Complete">
+                            <span class="round-tab">
+                                <i class="fa fa-check"></i>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+
+
+   <div class="row" ng-app="">
+           <form role="form" class="col-sm-12">
+                <div class="tab-content">
+                    <div class="tab-pane active" role="tabpanel" id="step1">
+                        <!-- <h3 class="align-center">Personal Details</h3> -->
+                        <!-- <p>This is step 1</p> -->
+                        <ul class="list-inline pull-right col s12 m12">
+                            <li>
+                                  
+                                <div class="form-group col-sm-6">
+                                  <label for="name"><span><i class="fa fa-user"></i></span> Name</label>
+                                  
+                                  <input id="name" type="text" class="validate" ng-model="name" required="required" title="">
+                                 
+                                </div>
+                            </li>
+                       <li>
+                          <div class="form-group col-sm-6">
+                            
+                            <label for="icon_telephone"><span><i class="fa fa-envelope"></i></span> Email</label>
+                            <input type="text"  class="validate text" id="email" ng-model="email"  required="required" title="">
+                          </div>
+                         </li>
+
+                        <li>
+                          <div class="form-group col-sm-6">
+                            <label for="icon_telephone"><span> <i class="fa fa-phone"></i></span> Phone #</label>
+                           
+                            <input type="text" class="validate text" id="phone" ng-model="phone" required="required" title="">
+                          </div>
+                        </li>
+                            <li> <button type="button" class="pull-left btn waves-effect waves-light next-step">Next
+                                   <i class="fa fa-arrow-right"></i>
+                                  </button>
+                           </li>
+                            <!-- <li><button type="button" class="btn btn-primary col s12 m12 l12">Save and continue</button></li> -->
+                        </ul>
+                    </div>
+                    <div class="tab-pane" role="tabpanel" id="step2">
+                        
+                        <ul class="list-inline">
+                              <li>
+                             
+                                 <div class="form-group col-sm-6">
+                                    <label for="username" class="control-label"><span><i class="fa fa-user"></i><span> Username</label>
+                                    <input id="username" type="text" class="validate" ng-model="username" required="required" title="">
+                                    
+                                </div>
+                            </li>
+                       <li>
+                           <div class="form-group col-sm-6">
+                                  <label for="password"><span><i class="fa fa-lock"></i></span> Password</label>
+                                  <input id="password" type="password" class="validate" ng-model="password" required="required" title="">
+                                  
+                            </div>
+                         </li>
+                         <li>
+                           <div class="form-group col-sm-6">
+                                  
+                                  <label for="password"><span><i class="fa fa-lock"></i></span> Re-Type Password</label>
+                                  <input id="rpassword" type="password" class="validate" required="required" title="">
+                            </div>
+                         </li>
+
+                         <li>
+
+                            <button type="button" class="btn btn-default prev-step pull-right">
+                                <i class="fa fa-arrow-left">Pre</i>
+                            </button>
+                          </li>
+                          <li class="pull-right">
+                                  <button type="button" class="pull-right btn waves-effect waves-light next-step">Next
+                                    <i class="fa fa-arrow-right"></i>
+                                  </button> 
+                          </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane" role="tabpanel" id="step3">
+                         <ul class="list-inline pull-left">
+                        <p>Please Choose an avatar</p>
+                        <!-- <input type="radio" name="avatar" value="1">1 -->
+                        <form id="avatar">
+                           <div class="row">
+                            <div class="col s12"> 
+                               <div class="col s6">
+                                  <input name="avatar" id="a1" type="radio" value="1" ng-model="avatar"/>
+                                  <label for="a1">
+                                    <span><img src="images/profile-pics/1.jpg"></span>
+                                  </label>
+                                </div>
+
+                                <div class="col s6">
+                                  <input name="avatar" id="a2" type="radio" value="2" ng-model="avatar" />
+                                  <label for="a2">
+                                    <span><img src="images/profile-pics/2.jpg"></span>
+                                  </label>
+                                </div> 
+                              </div>
+                              </div> 
+                              <hr>
+
+                           <div class="row">
+                            <div class="col s12">
+                                <div class="col s6">
+                                  <input name="avatar" id="a3" type="radio" value="3" ng-model="avatar"/>
+                                  <label for="a3">
+                                    <span><img src="images/profile-pics/3.jpg"></span>
+                                  </label>
+                                </div>
+                          
+                              
+                                <div class="col s6">
+                                  <input name="avatar" id="a4" type="radio" value="4" ng-model="avatar"/>
+                                  <label for="a4">
+                                    <span><img src="images/profile-pics/4.jpg"></span>
+                                  </label>
+                                </div>   
+                              </div>
+                            </div>
+                            <hr>
+
+                          <div class="row">
+                            <div class="col s12">
+                                <div class="col s6">
+                                  <input name="avatar" id="a5" type="radio" value="5" ng-model="avatar"/>
+                                  <label for="a5">
+                                    <span><img src="images/profile-pics/5.jpg"></span>
+                                  </label>
+                                </div>
+
+                                <div class="col s6">
+                                  <input name="avatar" id="a6" type="radio" value="6" ng-model="avatar"/>
+                                  <label for="a6">
+                                    <span><img src="images/profile-pics/6.jpg"></span>
+                                  </label>
+                                </div> 
+                              
+                            </div>
+                          </div>
+                          <hr>
+
+                         </form>
+
+
+                      
+                           
+                         
+                               <li><button type="button" class="btn btn-default prev-step"><i class="fa fa-arrow-left"></i>Pre</button></li>
+                                  <li class="pull-right"> <button type="button" class="pull-right btn waves-effect waves-light next-step">Next
+                                         <i class="fa fa-arrow-right"></i>
+                                        </button>
+                                 </li>
+                       
+                            <!-- <li><button type="button" class="btn btn-primary btn-info-full next-step">Save and continue</button></li> -->
+                        </ul>
+                    </div>
+                    <div class="tab-pane" role="tabpanel" id="complete">
+                        <h3>Summary</h3>
+                        <p>Name: {{name}}</p>
+                        <p>Email: {{email}}</p>
+                        <p>Phone #: {{phone}}</p>
+                        <p>Username: {{username}}</p>
+                        <!-- <p>Avatar: {{avatar}}</p> -->
+
+
+
+
+<!-- 
+
+    <div class="fixed-action-btn horizontal">
+    <a class="btn-floating btn-large red">
+      <i class="fa fa-check">Submit</i>
+    </a>
+   
+  </div> -->
+
+                        <button type="button" class="btn btn-primary btn-info-full" id="signup">Create Your Account</button>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </form>
+        </div>
+     
+    </div>
+    </section>
+   </div>
+</div>
+
+    </section>
+  </div>
+</div>
+
+    </body>
+
+
+<!-- 
+      <script type="text/javascript" src="js/jquery.js"></script> -->
+      <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+      <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+      <script type="text/javascript" src="js/jquery-ui.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+      <script type="text/javascript" src="js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="js/angular.min.js">
+            
+      </script>
+
+      <script type="text/javascript">
+      $(document).ready(function () {
+    //Initialize tooltips
+    $('.nav-tabs > li a[title]').tooltip();
+    
+    //Wizard
+    $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+
+        var $target = $(e.target);
+    
+        if ($target.parent().hasClass('disabled')) {
+            return false;
+        }
+    });
+
+    $(".next-step").click(function (e) {
+        
+        var $active = $('.wizard .nav-tabs li.active');
+        $active.next().removeClass('disabled');
+        nextTab($active);
+
+    });
+    $(".prev-step").click(function (e) {
+
+        var $active = $('.wizard .nav-tabs li.active');
+        prevTab($active);
+
+    });
+});
+
+function nextTab(elem) {
+    $(elem).next().find('a[data-toggle="tab"]').click();
+}
+function prevTab(elem) {
+    $(elem).prev().find('a[data-toggle="tab"]').click();
+}
+
+
+
+  // $(document).ready(function(){
+  //   $('ul.tabs').tabs({
+  //     swipeable:true;
+  //   });
+  // });
+
+  //    $('.datepicker').pickadate({
+  //   selectMonths: true, // Creates a dropdown to control month
+  //   selectYears: 15, // Creates a dropdown of 15 years to control year,
+  //   today: 'Today',
+  //   clear: 'Clear',
+  //   close: 'Ok',
+  //   closeOnSelect: false // Close upon selecting a date,
+  // });
+   // name = $("#name").val();
+   // email = $("#email").val()
+   // phone = $("#phone").val();
+   // username =$("#username").val();
+   // password = $("#password").val();
+   // rpassword = $("#rpassword").val();
+   // avatar = $("name[dp]")
+
+
+
+  //Error Fields
+    // $("#")
+    // $("#email").focus(function(){
+   //    if(name==""){
+   //      $("#name").focus();
+   //    }else{
+   //       $("#email").focus();
+   //    }
+   // })
+
+
+   $("#username").blur(function(){
+       username =$("#username").val();
+       if(username!=""){
+          $.post("php/functions.php",{status:"usernameExistence",username:username},function(data){
+            // console.log(data)
+            if(data=="Exists"){
+               Materialize.toast("This username exists please change it",3000);
+               $("#username").focus();
+
+            }else{
+              // $("#username").blur();
+            }
+          })
+       }
+   })
+        
+$("#signup").click(function(){
+  form = $("#avatar");
+    name = $("#name").val();
+   email = $("#email").val()
+   phone = $("#phone").val();
+   username =$("#username").val();
+   password = $("#password").val();
+   rpassword = $("#rpassword").val();
+    avatar=form.find('input[name=avatar]:checked').val();
+   // avatar = ();
+   // console.log(avatar)
+
+
+   if(name==""){
+      alert("Name field is required")
+      $("#name").focus();
+   }else if(email==""){
+       alert("Email field is required")
+        $("#email").focus();
+   }else if(phone==""){
+      alert("Phone # field is required")
+       $("#phone").focus();
+   }else if(username==""){
+      alert("Username field is required")
+       $("#username").focus();
+   }else if(username==""){
+      alert("Phone # field must be a number")
+   }else if(password != rpassword){
+      alert("Passwords do not match")
+   }else{
+    $.post("php/functions.php",{name:name,email:email,phone:phone,username:username,password:password,avatar:avatar,status:"signup"},function(data){
+        if(data=="Success"){
+           alert("Registration Successful\n Please Login to Start")
+           window.location="index.html"
+        }else{
+          console.log(data);
+        }
+
+    })
+    
+   }
+
+
+
+
+
+
+
+})
+
+
+
+
+
+
+      </script>
+    </body>
+  </html>
+         

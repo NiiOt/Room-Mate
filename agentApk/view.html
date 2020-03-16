@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <meta name="theme-color" content="#999999" />
+      <!--Import Google Icon Font-->
+      <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+      <!--Import materialize.css-->
+       <link type="text/css" rel="stylesheet" href="css/custom.css"  media="screen,projection"/>
+       <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.css"> -->
+          <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+           <link type="text/css" rel="stylesheet" href="css/sweetalert2.min.css"  media="screen,projection"/>
+          <link href='font-awesome/css/font-awesome.css' rel='stylesheet'>
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+
+    <body>
+        <div class="load-menu">
+        </div>
+
+
+
+
+          <div>
+               <div class='card' >
+                  <div class='card-image'>
+                    <div class='carousel carousel-slider'>
+                     
+                    </div>
+                <center style="color:#999999"> Please slide to view more pictures</center>
+                 <a href='#' class='btn-floating pull-right halfway-fab waves-effect waves-light' id='fav'><i class='fa fa-heart-o'></i></a>
+                 </div>
+               </div>
+                <div class="row">
+
+        </div>
+
+    </body>
+
+
+
+
+
+        <script src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+        <script src="js/jquery-ui.js"></script>
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+        <script type="text/javascript" src="js/download.js"></script>
+         <script type="text/javascript" src="js/sweetalert2.min.js"></script>
+        <script type="text/javascript">
+         $(document).ready(function(){
+             setTimeout(function(){
+              $(".search").attr("class","fa fa-eye");
+             },1500)
+              $.post("php/functions.php",{status:"viewHome"},function(data){
+                  $(".row").html(data);
+              })
+
+              $.post("php/functions.php",{status:"loadHomeImg"},function(data){
+                    var slider = $('.carousel');
+                    slider.carousel();
+
+                    //add a new item
+                     $(".carousel").html(data);
+
+                    //remove the 'initialized' class which prevents slider from initializing itself again when it's not needed
+                    if (slider.hasClass('initialized')){
+                        slider.removeClass('initialized')
+                    }
+
+                    //just reinit the carousel
+                    slider.carousel(); 
+              })
+
+              $.post("php/functions.php",{status:"favID"},function(data){
+                // console.log(data)
+                $("#fav").attr("title",data)
+
+              })
+
+
+              $('.load-menu').load("interface/menu.html");
+            // alert()  
+             $('.modal').modal();
+
+
+             $(".img").dblclick(function(){
+                  // alert();
+                  var d = new Date();
+                  var n = d.getTime();
+                  var link = document.createElement('a')
+                  name = $(this).attr('src')
+                  link.href = name;
+                  link.download = "roomate"+n;
+                  document.body.appendChild(link);
+                  link.click();
+
+             })
+
+
+             //Favourite UI Manipulation
+            setTimeout(function(){
+                favID = $("#fav").attr("title");
+                   // console.log(favID)
+                   $.post("php/functions.php",{status:"getFavourite",favID:favID},function(data){
+                       // console.log(data)
+                        if(data=="Has"){
+                           $("#fav").attr('class','btn-floating pull-right halfway-fab waves-effect waves-light red')
+                         }else{
+                           $("#fav").attr('class','btn-floating pull-right halfway-fab waves-effect waves-light')
+                        }
+                    })
+            },1500)
+
+
+           
+
+              $("#fav").click(function(){
+                name = $(this).attr('class')
+                id = $(this).attr('title')
+                // alert(name)
+
+                if(name=="btn-floating pull-right halfway-fab waves-effect waves-light"){
+                    $.post("php/functions.php",{status:"setFav",id:id},function(data){
+                      // console.log(data)
+                        if(data.Match="Success"){
+                            $("#fav").attr('class','btn-floating pull-right halfway-fab waves-effect waves-light red')
+                            Materialize.toast("Added to your favourites<i class='fa fa-heart'></i>",2000)
+                          }else{
+                            console.log(data)
+                          }
+                    })
+        
+                }else{
+                  $.post("php/functions.php",{status:"removeFav",id:id},function(data){
+                        if(data.Match="Success"){
+                            $("#fav").attr('class','btn-floating pull-right halfway-fab waves-effect waves-light')
+                            Materialize.toast("Removed from your favourites<i class='fa fa-heart-o'></i>",2000)
+                
+                        }else{
+                          // console.log(data)
+                        }
+                  })
+                }
+
+             })
+
+
+
+
+ 
+         })
+      </script>
+
+  </html>

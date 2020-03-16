@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <meta name="theme-color" content="#999999" />
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+       <link type="text/css" rel="stylesheet" href="css/custom.css"  media="screen,projection"/>
+       <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.css"> -->
+          <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+          <link href='font-awesome/css/font-awesome.css' rel='stylesheet'>
+     <link href='css/sweetalert2.min.css' rel='stylesheet'>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+
+    <body>
+        <div class="load-menu">
+        </div>
+
+        <section id="main">
+          
+        </section>
+         
+
+
+
+
+        </body>
+        <script src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+        <script src="js/jquery-ui.js"></script>
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+        <script type="text/javascript" src="js/pulltorefresh.js"></script>
+        <script type="text/javascript" src="js/sweetalert2.min.js"></script>
+        <script type="text/javascript">
+        window.onload = function () { Clear(); }
+        function Clear() {          
+            var historyLength=history.length;
+            if (historyLength > 0) history.go(-historyLength);
+        }
+</script>
+        <script type="text/javascript">
+         $(document).ready(function(){
+              $('.load-menu').load("interface/menu.html");
+
+              setTimeout(function(){
+              $(".search").attr("class","fa fa-heart");
+             },1500)
+
+              $.post("php/functions.php",{status:"loadFav"},function(data){
+                $("#main").html(data);
+              })
+
+               PullToRefresh.init({
+                mainElement: '#main', // above which element?
+                onRefresh: function (cb) {
+                  setTimeout(function () {
+                     $.post("php/functions.php",{status:"loadFav"},function(data){
+                        $("#main").html(data);
+                      })
+                    cb();
+                     Materialize.toast("Refreshed",1000);
+                  }, 1500);
+                }
+              });
+               
+            });
+          </script>
+      </html>

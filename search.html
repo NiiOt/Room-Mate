@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <meta name="theme-color" content="#999999" />
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+       <link type="text/css" rel="stylesheet" href="css/custom.css"  media="screen,projection"/>
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+      <link href='font-awesome/css/font-awesome.css' rel='stylesheet'>
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+
+    <body>
+
+    <div class="load-menu">
+    </div>
+    
+
+
+
+     
+        
+      <section class="main">
+            <div class="spinner-layer spinner-yellow">
+                <div class="circle-clipper left">
+                  <div class="circle"></div>
+                </div><div class="gap-patch">
+                  <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                  <div class="circle"></div>
+                </div>
+              </div>
+             
+       </section>
+
+
+         <!-- Modal Trigger -->
+  <!-- <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a> -->
+
+  <!-- Modal Structure -->
+<!--   <div id="modal1" class="modal bottom-sheet">
+    <div class="modal-content">
+       
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Get A Ticket</a>
+    </div>
+  </div> -->
+  
+<!-- <div class="page-footer"> -->
+<!-- </div> -->
+ 
+
+
+      <script type="text/javascript" src="cordova.js"></script>
+      <script src="js/jquery.js"></script>
+      <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+      <script src="js/jquery-ui.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+      <script type="text/javascript">
+
+            // $('.parallax').parallax();
+     $('.carousel').carousel({fullWidth: true});
+        
+  // M.AutoInit();
+        
+
+
+    $(document).ready(function(){
+    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal();
+    $('.load-menu').load("interface/menu.html");
+     // $("#search_li").html("<a href='#'  class=''><i class='fa fa-search'></i></a>")
+     // console.log($("#search_li"))
+          
+
+       setInterval(function(){
+          $(".i").attr("class","fa fa-home");
+
+       },1500)
+
+       $.post("php/functions.php",{status:"loadHomes"},function(data){
+          $(".main").html(data);
+       })
+
+       // $(".view").click(function(){
+       //    id=$(this).atttr("id");
+       //    console.log(id);
+       // })
+       
+
+       });
+
+      </script>
+    </body>
+  </html>
+        

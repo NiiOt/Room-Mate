@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+       <link type="text/css" rel="stylesheet" href="css/custom.css"  media="screen,projection"/>
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+
+    <body>
+      <header class="header">
+            
+      </header>
+      <div class="row">
+    <section>
+        <div class="wizard">
+            <div class="wizard-inner">
+                <div class="connecting-line"></div>
+                <ul class="nav nav-tabs" role="tablist">
+
+                    <li role="presentation" class="active">
+                        <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Location">
+                            <span class="round-tab">
+                                <i class="small material-icons">account_circle</i>
+                            </span>
+                        </a>
+                    </li>
+
+                    <li role="presentation" class="disabled">
+                        <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2">
+                            <span class="round-tab">
+                                <i class="material-icons">call</i>
+                            </span>
+                        </a>
+                    </li>
+                    <li role="presentation" class="disabled">
+                        <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Step 3">
+                            <span class="round-tab">
+                                <i class="material-icons">contact_mail</i>
+                            </span>
+                        </a>
+                    </li>
+
+                    <li role="presentation" class="disabled">
+                        <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Complete">
+                            <span class="round-tab">
+                                <i class="glyphicon glyphicon-ok"></i>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+   <div class="row">
+           <form role="form" class="col s12">
+                <div class="tab-content">
+                    <div class="tab-pane active" role="tabpanel" id="step1">
+                        <!-- <h3 class="align-center">Personal Details</h3> -->
+                        <!-- <p>This is step 1</p> -->
+                        <ul class="list-inline pull-right col s12 m12">
+                            <li>
+                                  
+                                <div class="input-field col s12 m12">
+                                  <i class="material-icons prefix">account_circle</i>
+                                  <!-- <input id="icon_prefix" type="text" class="validate"> -->
+                                  <select id="regions"></select>
+                                  <label for="icon_prefix">Name</label>
+                                </div>
+                            </li>
+                       <li>
+                          <div class="input-field col s12 m12">
+                            <i class="material-icons prefix">alarm</i>
+                            <input type="text" class="datepicker">
+                            <label for="icon_telephone">Birthday</label>
+                          </div>
+                         </li>
+                         <!--    <li> <button type="button" class="pull-left btn waves-effect waves-light next-step">Next
+                                   <i class="material-icons right">send</i>
+                                  </button>
+                           </li> -->
+                            <!-- <li><button type="button" class="btn btn-primary col s12 m12 l12">Save and continue</button></li> -->
+                        </ul>
+                    </div>
+                    <div class="tab-pane" role="tabpanel" id="step2">
+                        
+                        <ul class="list-inline pull-left">
+                              <li>
+                                  
+                                <div class="input-field col s12 m12">
+                                  <i class="material-icons prefix">account_circle</i>
+                                  <input id="icon_prefix" type="text" class="validate">
+                                  <label for="icon_prefix">Name</label>
+                                </div>
+                            </li>
+                       <li>
+                          <div class="input-field col s12 m12">
+                            <i class="material-icons prefix">date</i>
+                            <input type="text" class="datepicker">
+                            <label for="icon_telephone">Birthday</label>
+                          </div>
+                         </li>
+                         <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                            <li class="pull-right"> <button type="button" class="pull-right btn waves-effect waves-light next-step">Next
+                                   <i class="material-icons right">send</i>
+                                  </button>
+                           </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane" role="tabpanel" id="step3">
+                        
+                        <ul class="list-inline pull-left">
+                            <ul class="list-inline pull-left">
+                              <li>
+                                  
+                                <div class="input-field col s12 m12">
+                                  <i class="material-icons prefix">account_circle</i>
+                                  <input id="icon_prefix" type="text" class="validate">
+                                  <label for="icon_prefix">Name</label>
+                                </div>
+                            </li>
+                       <li>
+                          <div class="input-field col s12 m12">
+                            <i class="material-icons prefix">date</i>
+                            <input type="text" class="datepicker">
+                            <label for="icon_telephone">Birthday</label>
+                          </div>
+                         </li>
+                         <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                            <li class="pull-right"> <button type="button" class="pull-right btn waves-effect waves-light next-step">Next
+                                   <i class="material-icons right">send</i>
+                                  </button>
+                           </li>
+                       
+                            <!-- <li><button type="button" class="btn btn-primary btn-info-full next-step">Save and continue</button></li> -->
+                        </ul>
+                    </div>
+                    <div class="tab-pane" role="tabpanel" id="complete">
+                        <h3>Complete</h3>
+                        <p>You have successfully completed all steps.</p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </form>
+        </div>
+     
+    </div>
+    </section>
+   </div>
+</div>
+
+
+
+      <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+      <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+      <script type="text/javascript" src="js/bootstrap.min.js"></script>
+      <!-- <script type="text/javascript" src="js/jquery.steps.js"> -->
+      <script type="text/javascript" src="js/ghaddress.js"></script>
+    
+
+      <script type="text/javascript">
+      $(document).ready(function () {
+    //Initialize tooltips   
+    $(".header").load("interface/menu.html");
+    
+    $('.nav-tabs > li a[title]').tooltip();
+    
+    //Wizard
+    $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+
+        var $target = $(e.target);
+    
+        if ($target.parent().hasClass('disabled')) {
+            return false;
+        }
+    });
+
+    $(".next-step").click(function (e) {
+        
+        var $active = $('.wizard .nav-tabs li.active');
+        $active.next().removeClass('disabled');
+        nextTab($active);
+
+    });
+    $(".prev-step").click(function (e) {
+
+        var $active = $('.wizard .nav-tabs li.active');
+        prevTab($active);
+
+    });
+});
+
+function nextTab(elem) {
+    $(elem).next().find('a[data-toggle="tab"]').click();
+}
+function prevTab(elem) {
+    $(elem).prev().find('a[data-toggle="tab"]').click();
+}
+
+ // Initialize collapse button
+
+
+  // $(document).ready(function(){
+  //   $('ul.tabs').tabs({
+  //     swipeable:true;
+  //   });
+  // });
+
+     $('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15, // Creates a dropdown of 15 years to control year,
+    today: 'Today',
+    clear: 'Clear',
+    close: 'Ok',
+    closeOnSelect: false // Close upon selecting a date,
+  });
+        
+
+
+
+
+
+
+
+      </script>
+        
+
+      <!-- </script> -->
+    </body>
+  </html>

@@ -1,0 +1,129 @@
+ <div class="navbar-fixed">
+          <nav>
+            <div class="nav-wrapper">
+              <a href="#" data-activates="slide-out" class="button-collapse"><strong><i class="fa fa-reorder"></i></strong></a><span> Roomate</span>
+              <ul class="right">
+                <li id="search_li"><a  href="#modal1"  class="modal-trigger"><i class="fa fa-search search"></i></a></li>
+                
+              </ul>
+            </div>
+          </nav>
+        </div>
+      
+
+          <ul id="slide-out" class="side-nav">
+            <li><div class="user-view">
+              <div class="background">
+                <img src="images/bg.jpg">
+              </div>
+              <a href="#!user"><img class="circle" id="dp" src="images/w3.jpg"></a>
+              <a href="#!name"><span class="white-text name">App User</span></a>
+              <a href="#!email"><span class="white-text email waves-effect">Online</span></a>
+            </div></li>
+            <li><a href="home.html"><i class="fa fa-home"></i>Home</a></li>
+            <li><a href="fav.html"><i class="fa fa-heart"></i>Your Favourites</a></li>
+            <li><a href="message.html"><i class="fa fa-envelope"></i>Messages</a></li>
+          
+            <li><div class="divider"></div></li>
+             <li><a class="waves-effect" href="settings.html"><i class="fa fa-cog"></i>Settings</a></li>
+             <li><a class="waves-effect" id="about"><i class="fa fa-bullhorn"></i>About</a></li>
+             <li><a class="waves-effect" id="logout"><i class="fa fa-power-off"></i>Log Out</a></li>
+         </ul>
+
+
+        
+          <script type="text/javascript">
+            $("#about").click(function(){
+              swal("<b style='font-size:12px;'>Roomate by Sys~Hive + Hupgo + Tekkens</b>", "Roomate v2.0.1.5<br/>&copy 2018")
+            })
+
+
+
+            $("#logout").click(function(){
+               swal({   
+                      
+                    text: "Are you sure you want to Log Out?",   
+                    type: "question",   
+                    showCancelButton: true,   
+                    confirmButtonText: "Yes",
+                }).then(function(){
+                    $.post("php/functions.php",{status:"logout"},function(data){
+                                     // console.log(data)
+                          if(data=="Success"){
+                              swal("Logged Out!", "Hope to see you soon .", "success"); 
+                              window.location="index.html";
+                          }else{
+                                        // console.log(data)
+                          }
+                        })
+                        
+                });
+            
+               
+            })
+
+            // $(".search").hide();
+
+            $.post("php/functions.php",{status:"getUser"},function(data){
+                // console.log(data)
+                // console.log("Hi me")
+                if(data.match("Undefined")){
+                  window.location.href="index.html"
+                }else{
+                  $(".name").text(data)
+                  salutation = ["Hi","Hello","Welcome","I miss you"];
+                  index = Math.floor(Math.random() * 4);
+                  // console.log(index)
+                  Materialize.toast(salutation[index]+" "+data,3000)
+                }
+            })
+
+
+             $.post("php/functions.php",{status:"getUserImg"},function(data){
+              // console.log(data)
+                img = "images/profile-pics/"+data+".jpg";
+                $("#dp").attr("src",img)
+
+             })
+
+
+
+         $(".loader").hide()
+          $(".button-collapse").sideNav();
+           $(".search-collapse").sideNav();
+       
+     $('.carousel.carousel-slider').carousel({fullWidth: true});
+        
+
+          $('.button-collapse').sideNav({
+              menuWidth: 300, // Default is 300
+              edge: 'left', // Choose the horizontal origin
+              closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+              draggable: true, // Choose whether you can drag to open on touch screens,
+              onOpen: function(el) { // Do Stuff 
+              }, // A function to be called when sideNav is opened
+              onClose: function(el) {// Do Stuff
+               }, // A function to be called when sideNav is closed *#*#4636#*#*
+            }
+          );
+ 
+          $('#autocomplete-input').on({'input':function(){
+            text = $(this).val()
+            
+              $.post("php/functions.php",{status:"search",text:text},function(data){
+                  $(".main").html(data)
+              })
+
+            }
+          })
+
+      
+   
+        
+        
+
+
+
+        
+
+      </script>

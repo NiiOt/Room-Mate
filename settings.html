@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <meta name="theme-color" content="#999999" />
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+       <link type="text/css" rel="stylesheet" href="css/custom.css"  media="screen,projection"/>
+       <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.css"> -->
+          <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+          <link type="text/css" rel="stylesheet" href="css/sweetalert2.min.css"  media="screen,projection"/>
+
+          <link href='font-awesome/css/font-awesome.css' rel='stylesheet'>
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+
+    <body>
+
+        <div class="load-menu">
+        </div>
+
+        
+                <ul class="collapsible">
+                  <li>
+                    <div class="collapsible-header"><i class="fa fa-lock"></i>Password</div>
+                    <div class="collapsible-body">
+                         <div class="row">
+                            <form class="col s12">
+                                <div class="row">
+                                  <div class="input-field col s12">
+                                    <input id="oldPass" type="password" class="validate">
+                                    <label for="oldPass">Old Password</label>
+                                  </div>
+                                      <div class="input-field col s12">
+                                        <input id="newPass" type="password" class="validate">
+                                        <label for="newPass">New Password</label>
+                                      </div>
+
+                                      <div class="input-field col s12">
+                                        <input id="rpass" type="password" class="validate"><span class="text red">Passwords must match</span>
+                                        <label for="rpass">Re-type Password</label>
+
+                                      </div>
+
+                                     <div class="input-field col s12">
+                                          <a type='button' id='passChange' class='btn view  waves-effect waves-light center'><i class='fa fa-lock'></i><span> Change</span></a>
+                                     </div>
+
+                                </div>
+                            </form>
+                    </div>
+                  </li>
+                 
+
+
+                   <li>
+                    <div class="collapsible-header"><i class="fa fa-meh-o"></i>Avatar</div>
+                    <div class="collapsible-body">
+                          <form id="avatar">
+                             <p>Please Choose an avatar</p>
+                        <!-- <input type="radio" name="avatar" value="1">1 -->
+                           <div class="row">
+                            <div class="col s12"> 
+                               <div class="col s6">
+                                  <input name="avatar" id="a1" type="radio" value="1" />
+                                  <label for="a1">
+                                    <span><img src="images/profile-pics/1.jpg"></span>
+                                  </label>
+                                </div>
+
+                                <div class="col s6">
+                                  <input name="avatar" id="a2" type="radio" value="2" />
+                                  <label for="a2">
+                                    <span><img src="images/profile-pics/2.jpg"></span>
+                                  </label>
+                                </div> 
+                              <hr>
+                              </div>
+                              </div> 
+
+                           <div class="row">
+                            <div class="col s12">
+                                <div class="col s6">
+                                  <input name="avatar" id="a3" type="radio" value="3" />
+                                  <label for="a3">
+                                    <span><img src="images/profile-pics/3.jpg"></span>
+                                  </label>
+                                </div>
+                          
+                              
+                                <div class="col s6">
+                                  <input name="avatar" id="a4" type="radio" value="4" />
+                                  <label for="a4">
+                                    <span><img src="images/profile-pics/4.jpg"></span>
+                                  </label>
+                                </div>   
+                            <hr>
+                              </div>
+                            </div>
+
+                          <div class="row">
+                            <div class="col s12">
+                                <div class="col s6">
+                                  <input name="avatar" id="a5" type="radio" value="5" />
+                                  <label for="a5">
+                                    <span><img src="images/profile-pics/5.jpg"></span>
+                                  </label>
+                                </div>
+
+                                <div class="col s6">
+                                  <input name="avatar" id="a6" type="radio" value="6" />
+                                  <label for="a6">
+                                    <span><img src="images/profile-pics/6.jpg"></span>
+                                  </label>
+                                </div> 
+                              
+                          <hr> 
+                            </div>
+                          </div>
+                            <div class="input-field col s12">
+                                <a type='button' id='avatarChange' class='btn view  waves-effect waves-light center'><i class='fa fa-meh-o'></i><span> Change</span></a>
+                             </div>
+                          </form>
+
+
+                    </div>
+                  </li>
+
+
+                  <li>
+                    <div class="collapsible-header"><i class="fa fa-briefcase"></i>Privacy</div>
+                    <div class="collapsible-body" > 
+                      <div class="row">
+                            <form class="col s12">
+                                <div class="row">
+                                  <center><div class="switch">
+                                      <p>Share favourited apartments with respective Landlords? <em>(You are likely to receive calls from the respective landlords)</em></p>
+                                      <label>
+                                        No
+                                        <input type="checkbox">
+                                        <span class="lever"></span>
+                                        Yes
+                                      </label>
+                                    </div></center>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+
+                  </li>
+                  <li>
+                    <div class="collapsible-header"><i class="fa fa-shirt"></i>Theme</div>
+                    <div class="collapsible-body"><span>Coming Soon</span></div>
+                  </li>
+                </ul>
+        
+          
+
+
+
+
+
+        </body>
+        <script src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+        <script src="js/jquery-ui.js"></script>
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+         <script type="text/javascript" src="js/sweetalert2.min.js"></script>
+        <script type="text/javascript">
+         $(document).ready(function(){
+              $('.load-menu').load("interface/menu.html");
+
+              setTimeout(function(){
+                  $(".search").attr("class","fa fa-gear");
+             },1500)
+             
+              $('.text').hide();
+              $('#passChange').attr("disabled","true")
+
+              $.post("php/functions.php",{status:"getAvatar"},function(data){
+                  // console.log(data)
+                  $("#a"+data).attr("checked","true");
+              })
+
+              $("#avatarChange").click(function(){
+                form=$("#avatar");
+                avatar=form.find('input[name=avatar]:checked').val();
+                console.log(avatar)
+                $.post("php/functions.php",{status:"changeAvatar",newAvatar:avatar},function(data){
+                    if(data=="Success"){
+                      Materialize.toast("Avatar has been changed Successfully",3000)
+                    }else{
+                      console.log(data)
+                    }
+                })
+
+              })
+
+              $("#rpass").on('input',function(){
+                  newPass = $("#newPass").val();
+                  rpass =$("#rpass").val();
+                  if(rpass!=newPass){
+                     $('.text').show();
+                  }else{
+                     $('.text').hide();
+                     $('#passChange').removeAttr("disabled")
+                  }
+              })
+
+
+              $("#passChange").click(function(){
+                oldPass = $("#oldPass").val();
+                newPass = $("#newPass").val();
+                // rpass =$("#rpass").val();
+                $.post("php/functions.php",{status:"getOldPass",oldPass:oldPass},function(data){
+                    if(data=="Good"){
+                       $.post("php/functions.php",{status:"changePass",newPass:newPass},function(data){
+                          if(data=="Success"){
+                              Materialize.toast("Password changed successfully",3000);
+                               $("#oldPass").val("");
+                               $("#newPass").val("");
+                               $("#rpass").val("");
+                          }else{console.log(data)}
+                        })
+                    }else{
+                      // console.log(data)
+                      Materialize.toast("Unknown user password",3000);
+                      $("#oldPass").focus();
+                    }
+                })
+
+
+              })
+            });
+          </script>
+      </html>
