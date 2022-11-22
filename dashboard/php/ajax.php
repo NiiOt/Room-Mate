@@ -5,7 +5,7 @@ include "config.php";
 
 function activityLog($uid,$activity){
     include "config.php";
-    $sessionkey = time();
+    $sessionkey =  $_SESSION["sessionkey"];
     $now = date("d-m-Y h:i:sa");
     $sql = mysqli_query($con,"INSERT INTO `logs`(`id`, `uid`, `act_time`,`session_key`,`activity`) VALUES ('','$uid','$now','$sessionkey','$activity')");
     if($sql){
@@ -106,7 +106,7 @@ switch ($status) {
 
             $sql = mysqli_query($con, "UPDATE `apartment` SET `available`='$available' WHERE `id`='$aid'");
             if($sql){
-                $activity = "Apart.$aid avail_$available";
+                $activity = "Changed Apartment with ID $aid availability to $available";
                 $through = activityLog($uid,$activity);
                 echo "$through";
             }
@@ -121,7 +121,7 @@ switch ($status) {
 
             $sql = mysqli_query($con, "UPDATE `apartment` SET `approved`='$approve' WHERE `id`='$aid'");
             if($sql){
-                $activity = "Apart.$aid approve_$approve";
+                $activity = "Changed Apartment with ID $aid Approval to $approve";
                 $through = activityLog($uid,$activity);
                 echo "$through";
             }
@@ -215,10 +215,13 @@ switch ($status) {
 
                 case 'homeSearch':// From landing Page
                  $district = $_POST["district"];
+                 $ptype = $_POST["ptype"];
                     # code...
-                $sql = mysqli_query($con,"SELECT `apartment`.`name`,`apartment`.`id`,`regions`.`region`,`amount`,`description`,`apartment_img`.`img`,`district`.`name` AS `district`,`type` FROM `apartment`,`regions`,`apartment_img`,`district`,`property_type` WHERE `apartment`.`region`=`regions`.`id` AND `apartment_img`.`apartment_id`=`apartment`.`id` AND `apartment`.`available` = 'YES' AND `approved`='YES' AND `district`.`id` = `apartment`.`district` AND `apartment`.`district`='$district' AND `apartment`.`p_type`=`property_type`.`id` GROUP BY `apartment_img`.`apartment_id`");
+                $sql = mysqli_query($con,"SELECT `apartment`.`name`,`apartment`.`id`,`regions`.`region`,`amount`,`description`,`apartment_img`.`img`,`district`.`name` AS `district`,`type` FROM `apartment`,`regions`,`apartment_img`,`district`,`property_type` WHERE `apartment`.`region`=`regions`.`id` AND `apartment_img`.`apartment_id`=`apartment`.`id` AND `apartment`.`available` = 'YES' AND `approved`='YES' AND `district`.`id` = `apartment`.`district` AND `apartment`.`district`='$district' AND `apartment`.`p_type`=`property_type`.`id` AND `apartment`.`p_type`='$ptype'  GROUP BY `apartment_img`.`apartment_id`");
 
+                    echo "<h2 class='title-section clearfix'> Search Results for $ptype in $district:</h2>";
                     if(mysqli_num_rows($sql)>0){
+
                         while($row = mysqli_fetch_assoc($sql)){
                             $id = $row["id"];
                             $name = $row["name"];
@@ -264,6 +267,12 @@ switch ($status) {
               echo "$avatar";
               
             break; 
+
+
+            case 'verifyUsername':
+
+
+            break;
 
 	   default:
 		# code...

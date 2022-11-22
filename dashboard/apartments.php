@@ -329,7 +329,8 @@ function approveSlider($approve,$id){
                                         </select>
                                     </div>
                                 </div>
-                                                                   
+                                           
+ <!-- <button type='button' id='id' class='btnapartment btn btn-primary waves-effect' data-toggle='modal' href='#modalWider1'><i class='zmdi zmdi-upload'></i>vsdfdfsd</button>                         -->
                                      <div class="col-sm-6 col-sm-offset-6 m-b-20">
                                         <input type="submit" name="addApartment" class="btn bgm-teal">
 
@@ -463,6 +464,11 @@ function approveSlider($approve,$id){
                                                 $contact = $row["contact"];
                                                 $x++;
 
+
+                                                $view = $id + 1;
+                                                $edit = $id + 2;
+                                                $delete = $id + 3;
+
                                                 echo "<tr>
                                                         <td>$x</td>
                                                         <td>$name</td>
@@ -480,9 +486,9 @@ function approveSlider($approve,$id){
                                                         <td><a href='tel:$contact'>$contact_person</a></td>
                                                         <td>
                                                             <button type='button' id='$id' class='btnapartment btn btn-primary waves-effect' data-toggle='modal' href='#modalWider'><i class='zmdi zmdi-upload'></i></button>
-                                                            <a class='btn btn-info waves-effect'><i class='zmdi zmdi-image' id='$id' class='btnapartment btn btn-primary waves-effect' data-toggle='modal' href='#modalWider1'></i></a>
-                                                            <a class='btn btn-success waves-effect'><i class='zmdi zmdi-image'></i></a>
-                                                            <a class='btn btn-danger waves-effect'><i class='zmdi zmdi-image'></i></a>
+                                                            <a class='btn btn-info waves-effect'><i class='zmdi zmdi-image' id='$view' class='btnapartment btn btn-primary waves-effect' data-toggle='modal' href='#modalWider1'></i></a>
+                                                            <a class='btn btn-success waves-effect' id='$edit' ><i class='zmdi zmdi-image'></i></a>
+                                                            <a class='btn btn-danger waves-effect' id='$delete'><i class='zmdi zmdi-image'></i></a>
 
                                                         </td>
 
@@ -490,13 +496,14 @@ function approveSlider($approve,$id){
                                             }
                                         }echo "<script src='vendors/bower_components/jquery/dist/jquery.min.js'></script><script src='js/scripts.js'></script>";
 
-
+                                        mysqli_close($con);
                                     ?>
                                 </tbody>
                             </table>
                         </div>
                     </div>
         
+
           <div class="modal fade" id="modalWider" tabindex="-1" role="dialog" aria-hidden="true">
                                 <div class="modal-dialog modal-md">
                                     <div class="modal-content">
@@ -504,7 +511,10 @@ function approveSlider($approve,$id){
                                             <h4 class="modal-title">Apartment Image Manager</h4>
                                         </div>
                                         <div class="modal-body">
-                                                                             
+                                             <div class="modal-body">
+                                              <div class="lightbox row">
+                                                
+                                                </div>                                
                                             <hr>
                                             <form action="php/parser.php" class="dropzone">
                                                   <!-- <textarea class="form-control msgBox" rows="5" placeholder="Type your message here" required="required"></textarea> -->
@@ -527,7 +537,7 @@ function approveSlider($approve,$id){
                                         <div class="modal-header">
                                             <h4 class="modal-title">Apartment Image Manager</h4>
                                         </div>
-                                        <div class="modal-body">
+                                       <!--  <div class="modal-body">
                                               <div class="lightbox row">
                                                     <div data-src='php/uploads/13.jpg' class='col-md-2 col-sm-4 col-xs-6'>
                                                         <div class='lightbox-item'>
@@ -549,7 +559,7 @@ function approveSlider($approve,$id){
                                                 </div>
                                         
                                            
-                                        </div>
+                                        </div> -->
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-link" data-dismiss="modal">Close
                                             </button>
@@ -561,14 +571,12 @@ function approveSlider($approve,$id){
 
 
 
-
-
                 </div>
             </section>
         </section>
 
         <footer id="footer">
-            Copyright &copy; 2015 Roomate Admin
+            Copyright &copy; <?php echo date('Y')?> Roomate Admin
             
             <ul class="f-menu">
                 <li><a href="#">Home</a></li>
@@ -680,7 +688,7 @@ function approveSlider($approve,$id){
                         id=$(this).attr("id");
                         // console.log(id)
                          $.post("php/ajax.php",{status:"updateApproval",approve:"YES",id:id},function(data){
-                            console.log(data)
+                            // console.log(data)
                             if(data=="Success"){
                                  $("#"+id).attr("class","approve_c")
                                 swal("Approval Updated to YES","success");
@@ -692,8 +700,23 @@ function approveSlider($approve,$id){
                     })
 
             } );
+
+
+            // for(var i = 0; i<=9; i++){
+            //     for(var j = 0; j <=i; j++){
+            //         console.log("*");
+            //     }
+            //     console.log("\n");
+            // }
+
+
+
         </script>
     </body>
   
 
 </html>
+<?php
+//    echo "php" + 1;
+//
+//  ?>

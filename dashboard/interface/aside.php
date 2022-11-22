@@ -42,6 +42,10 @@
                             <li><a href="landlord.php">LandLords</a></li>
                         </ul>
                     </li>
+                      <li class="active">
+                        <a href="logs.php"><i class="zmdi zmdi-info-outline"></i> Activity Logs</a>
+                    </li>
+
                     <!-- <li class="sub-menu">
                         <a href="#" data-ma-action="submenu-toggle"><i class="zmdi zmdi-view-compact"></i> Headers</a>
 

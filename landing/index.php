@@ -93,7 +93,7 @@
                              data-speed="1000"
                              data-start="1000"
                              data-easing="easeOutExpo">
-                            27523 Pacific Coast
+                            27523 West Hill Mall
                         </div>
                         <div class="caption slider-text sfl"
                              data-x="50"
@@ -101,7 +101,7 @@
                              data-speed="1000"
                              data-start="1800"
                              data-easing="easeOutExpo">
-                            124, Munna wali 
+                            124, Eden Heights
                         </div>
                         <div class="caption sfb slider-price tp-resizeme"
                              data-x="50"
@@ -122,7 +122,7 @@
                              data-speed="1000"
                              data-start="1000"
                              data-easing="easeOutExpo">
-                            27523 Pacific Coast
+                            27523 Mountain View
                         </div>
                         <div class="caption slider-text sfl"
                              data-x="50"
@@ -130,7 +130,7 @@
                              data-speed="1000"
                              data-start="1800"
                              data-easing="easeOutExpo">
-                            124, Munna wali 
+                            124, Trassaco Valley
                         </div>
                         <div class="caption sfb slider-price tp-resizeme"
                              data-x="50"
@@ -150,7 +150,7 @@
             <div class="container">
                 <form role="form">
                     <div class="row">
-                        <div class="col-md-4 col-sm-6 margin20 select-option">
+                        <div class="col-md-3 col-sm-6 margin20 select-option">
                             <section>
                                 <select class="form-control" id="region">
                                     <option value="" disabled selected>Region</option>
@@ -170,7 +170,7 @@
                                 </select>
                             </section>
                         </div>
-                        <div class="col-md-4 col-sm-6 margin20 select-option">
+                        <div class="col-md-3 col-sm-6 margin20 select-option">
                             <section>
                                 <select class="form-control" id="district">
                                     <option value="" disabled selected>District</option>
@@ -179,16 +179,28 @@
                                 <i class="fa fa-spinner fa-spin" id="loader">Loading</i> 
                             </section>
                         </div>
-                      <!--   <div class="col-md-3 col-sm-6 margin20 select-option">
+                        <div class="col-md-3 col-sm-6 margin20 select-option">
                             <section>
-                                <select class="cs-select cs-skin-elastic">
-                                    <option value="" disabled selected>Contract</option>
-                                    <option value="">For Rent</option>
-                                    <option value="">For Buy</option>
+                                <select class="form-control" id="p_type">
+                                    <option value="" disabled selected>Property Type</option>
+                                   
+                                      <?php 
+                                            $sql = mysqli_query($con,"SELECT `type`,`id` FROM `property_type` ORDER BY `id` ASC"  );
+                                            if(mysqli_num_rows($sql)>0){
+                                                while($row=mysqli_fetch_assoc($sql)){
+                                                    $id = $row["id"];
+                                                    $type =$row["type"];
+                                                    
+                                                    echo "<option value='$id'>$type </option>";
+                                                }
+                                             }
+
+
+                                        ?>
                                 </select>
                             </section>
-                        </div> -->
-                        <div class="col-md-4 col-sm-6 margin20">
+                        </div>
+                        <div class="col-md-3 col-sm-6 margin20">
                             <a href="#" class="btn btn-red btn-lg btn-block" id="searchBtn"><i class="fa fa-search"></i>Search</a>
                         </div>
                     </div>
@@ -203,8 +215,9 @@
       
         <!-- <div class="divide70"></div> -->
         <div class="container">
-            <h3 class="title-section clearfix">Featured property </h3>
             <div class="row here">
+                <div class="col-md-9">
+            <h3 class="title-section clearfix">Featured property </h3>
                 <?php
                 $sql = mysqli_query($con,"SELECT `apartment`.`name`,`apartment`.`id`,`regions`.`region`,`contract_type`,`amount`,`description`,`apartment_img`.`img`,`district`.`name` AS `district` ,`type`,`apartment`.`currency` FROM `apartment`,`regions`,`apartment_img`,`district`,`property_type` WHERE `apartment`.`region`=`regions`.`id` AND `apartment_img`.`apartment_id`=`apartment`.`id` AND `apartment`.`available` = 'YES' AND `approved`='YES' AND `district`.`id` = `apartment`.`district` AND `apartment`.`p_type`=`property_type`.`id` GROUP BY `apartment_img`.`apartment_id`");
 
@@ -221,7 +234,7 @@
                             $p_type = $row["type"];
                             $currency = $row["currency"];
 
-                            echo " <div class='col-sm-6 col-md-3 margin30 viewHome' id='$id' title='$name'>
+                            echo " <div class='col-sm-6 col-md-4 margin30 viewHome' id='$id' title='$name'>
                                         <div class='property clearfix'>
                                             <div class='image'>
                                                 <div class='content'>
@@ -233,10 +246,15 @@
                                             </div><!--image-->
                                             <div class='property-detail'>
                                                 <h5 class='title'><a href='#'>$name</a> <a class='pull-right hidden-xs'>($p_type)</a></h5>
-                                                <span class='location'>$region</span>
+                                                <span class='location'><b>$region</b></span>
                                                 <div class='pull-left'>
-                                                    <p><b>District:</b> $district</p>
+                                                    <p><b>Details:</b></p>
                                                 </div>
+                                                <div class='pull-right'>
+                                                    <span><img src='img/estate/bedrooms.png' alt=''> 4</span>
+                                                    <span><img src='img/estate/bathrooms.png' alt=''> 3</span>
+                                                </div>
+
                                                
                                             </div><!--property details-->
                                         </div><!--property-->
@@ -248,7 +266,10 @@
 
 
                 ?>
-                
+                </div>
+                <div class="col-md-3">
+                    <h3 class="title-section clearfix">Paid Promos Here</h3>
+                </div>
             </div>
         </div>
         
@@ -323,8 +344,9 @@
               $("#searchBtn").click(function(e){
                 e.preventDefault();
                  district = $("#district").val();
+                 ptype = $("#p_type").val();
                  console.log(district)
-                 $.post("../dashboard/php/ajax.php",{status:"homeSearch",district:district},function(data){
+                 $.post("../dashboard/php/ajax.php",{status:"homeSearch",district:district,ptype:ptype},function(data){
                     $(".here").html(data)
                  })
               })

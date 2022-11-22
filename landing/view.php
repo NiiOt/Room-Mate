@@ -1,12 +1,13 @@
 <?php
     include "../dashboard/php/config.php";
     $view = $_GET["view"]; 
-    if($view==""){
+     $name = $_GET["name"];
+    if($view=="" || $name==""){
         header("location: index.php");
     }else{
 
     $view = substr($view, 4);
-    $name = $_GET["name"];
+   
     // echo "$name";
     global $name;
     global $view ;
@@ -103,7 +104,9 @@ function getUtype($utype){
                             while($row = mysqli_fetch_assoc($sql)){
                                 $name = $row["name"];
 
-                                echo "$name";
+                                $vid = base64_encode($view);
+                                $vid = base64_encode($vid);
+                                echo "<a href='listings.php?list=$vid&name=$name'>$name</a>";
                             }
                               ?></h3>
                             
@@ -112,13 +115,20 @@ function getUtype($utype){
                             <ul class="slides">
                                <?php
                                 $sql = mysqli_query($con,"SELECT * FROM `apartment_img` WHERE `apartment_id`='$view'");
-                                    while($row = mysqli_fetch_assoc($sql)){
-                                        $img = $row["img"];
+                                   if(mysqli_num_rows($sql)>0){
+                                        while($row = mysqli_fetch_assoc($sql)){
+                                            $img = $row["img"];
 
-                                        echo "<li>
-                                                    <img src='../dashboard/php/uploads/$img'  alt='' class='img-responsive' style='max-height:400px; width:relative'>
-                                                </li>";
-                                    }
+                                            echo "<li>
+                                                        <img src='../dashboard/php/uploads/$img'  alt='' class='img-responsive' style='max-height:400px; width:relative'>
+                                                    </li>";
+                                        }
+                                   }else{
+                                    echo "";
+                                   }
+
+
+
                                 ?>
                                 
                             </ul>
@@ -187,9 +197,78 @@ function getUtype($utype){
                                          ";}
                                      }
                         ?>
+
+
                         
                     </div><!--property meta-->
+
                        <div class="sharethis-inline-share-buttons"></div>
+                       <hr/>
+
+                                   <div class="row">
+                <div class="col-md-9 contact-column">
+                     <h4>Contact Agent</h4>
+                    <p>
+                       Leave a message here if your are interested in this Property
+                    </p>
+                    <div class="divide10"></div>
+
+                     <div class="form-contact">
+                        <div class="required">
+                            <p>( <span>*</span> fields are required )</p>
+                        </div>
+
+                       <form name="sentMessage" id="contactForm" method="#" novalidate>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="row control-group">
+                                        <div class="form-group col-xs-12 controls">
+                                            <label>Name<span>*</span></label>
+                                            <input type="text" class="form-control" placeholder="Name" id="name" required data-validation-required-message="Please enter your name.">
+                                            <p class="help-block"></p>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="row control-group">
+                                        <div class="form-group col-xs-12 controls">
+                                            <label>Email Address<span>*</span></label>
+                                            <input type="email" class="form-control" placeholder="Email Address" id="email" required data-validation-required-message="Please enter your email address.">
+                                            <p class="help-block"></p>
+                                        </div>
+                                    </div> 
+                                </div>
+                            </div>
+                            <div class="row control-group">
+                                <div class="form-group col-xs-12  controls">
+                                    <label>Phone Number<span>*</span></label>
+                                    <input type="tel" class="form-control" placeholder="Phone Number" id="phone" required data-validation-required-message="Please enter your phone number.">
+                                    <p class="help-block"></p>
+                                </div>
+                            </div>
+                            <div class="row control-group">
+                                <div class="form-group col-xs-12 controls">
+                                    <label>Message<span>*</span></label>
+                                    <textarea rows="5" class="form-control" placeholder="Message" id="message" required data-validation-required-message="Please enter a message."></textarea>
+                                    <p class="help-block"></p>
+                                </div>
+                            </div>
+                            <br>
+                            <div id="success"></div>
+                            <div class="row">
+                                <div class="form-group col-xs-12">
+                                    <button type="button" id="messageAgent"  class="btn btn-red btn-lg">Send Message</button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div><!--contact form-->
+
+                </div><!--col-->
+         
+            </div><!--row-->
                     <!--description-->
                   
 
@@ -236,7 +315,7 @@ function getUtype($utype){
 
                                 echo "Roomate has  No other available property around within district";
                             }
-
+                            mysqli_close($con)
 
                          ?>
 
@@ -293,6 +372,16 @@ function getUtype($utype){
                 //     location.href = url
                 // })
 
+                // $("#messageAgent"),click(function(){
+                //     name = $("#name").val();
+                //     email = $("#email").val()
+                //     phone = $("#phone").val();
+                //     message = $("#message").val()
+
+                    
+
+                //     $.post("../dashboard/php/ajax.php",{})
+                // })
 
              
             });

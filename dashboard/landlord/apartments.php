@@ -410,7 +410,7 @@ function slider($available,$id){
         </section>
 
         <footer id="footer">
-            Copyright &copy; 2015 Roomate Admin
+            Copyright &copy; <?php echo date('Y')?> Roomate Admin
             
             <ul class="f-menu">
                 <li><a href="#">Home</a></li>

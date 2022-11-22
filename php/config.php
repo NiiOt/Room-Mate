@@ -7,7 +7,7 @@ $db  ="roomate";
 
 $con=mysqli_connect($host,$user,$pass,$db);
 if($con){
-//    echo "Connected";
+   // echo "Connected";
     
 }else{
     echo "Failed".mysqli_error($con);

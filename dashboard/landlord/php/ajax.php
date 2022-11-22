@@ -116,6 +116,53 @@ switch ($status) {
               
             break; 
 
+            case 'getAgentProps':
+            #code ...
+             $uid = $_SESSION["id"];//ACTIVE LOGGED IN ADMIN
+             $sql = mysqli_query($con,"SELECT COUNT(`id`) AS `number` FROM `apartment` WHERE `contact_person`='$uid' ");
+                while($row=mysqli_fetch_assoc($sql)){
+                    $number = $row["number"];
+
+                    echo "$number";
+                }
+            break;
+
+              case 'approvedProps':
+            #code ...
+             $uid = $_SESSION["id"];//ACTIVE LOGGED IN ADMIN
+             $sql = mysqli_query($con,"SELECT COUNT(`id`) AS `number` FROM `apartment` WHERE `contact_person`='$uid' AND `approved` = 'YES' ");
+                while($row=mysqli_fetch_assoc($sql)){
+                    $number = $row["number"];
+
+                    echo "$number";
+                }
+            break;
+
+              case 'pendingApproval':
+            #code ...
+             $uid = $_SESSION["id"];//ACTIVE LOGGED IN ADMIN
+             $sql = mysqli_query($con,"SELECT COUNT(`id`) AS `number` FROM `apartment` WHERE `contact_person`='$uid' AND `approved` = 'NO' ");
+                while($row=mysqli_fetch_assoc($sql)){
+                    $number = $row["number"];
+
+                    echo "$number";
+                }
+            break;
+
+            case 'stillAvailable':
+            #code ...
+             $uid = $_SESSION["id"];//ACTIVE LOGGED IN ADMIN
+             $sql = mysqli_query($con,"SELECT COUNT(`id`) AS `number` FROM `apartment` WHERE `contact_person`='$uid' AND `available` = 'YES' ");
+                while($row=mysqli_fetch_assoc($sql)){
+                    $number = $row["number"];
+
+                    echo "$number";
+                }
+            break;
+
+
+
+
 	default:
 		# code...
 		break;

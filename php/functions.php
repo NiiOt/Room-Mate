@@ -45,6 +45,8 @@ function getAdvance($apo){
 
 
 
+if(isset($_POST["status"])){
+	
 
 $status = $_POST["status"];
 
@@ -455,7 +457,7 @@ else if($status=="getOldPass"){
 
 
 
-
+}
 
 
 

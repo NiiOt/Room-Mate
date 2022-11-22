@@ -311,7 +311,7 @@ function approveSlider($approve,$id){
                                             }
                                         }echo "<script src='vendors/bower_components/jquery/dist/jquery.min.js'></script><script src='js/scripts.js'></script>";
 
-
+                                        mysqli_close($con);
                                     ?>
                                 </tbody>
                             </table>

@@ -10,7 +10,7 @@ include "config.php";
 
 function activityLog($uid,$activity){
     include "config.php";
-    $sessionkey = time();
+    $sessionkey = $_SESSION["sessionkey"];
     $now = date("d-m-Y h:i:sa");
     $sql = mysqli_query($con,"INSERT INTO `logs`(`id`, `uid`, `act_time`,`session_key`,`activity`) VALUES ('','$uid','$now','$sessionkey','$activity')");
     if($sql){
@@ -27,69 +27,7 @@ function activityLog($uid,$activity){
 
 
 
-if(isset($_POST["registerBtn"])){
-   $name = $_POST["name"];
-   $email = $_POST["email"];
-   $phone = $_POST["phone"];
-   $username =$_POST["runame"];
-   $password = $_POST["rpass"];
-   $rpassword = $_POST["rrpass"];
-   $avatar = $_POST["avatar"];
-   // $rpassword = $("#rpassword").val();
-   if($password!=$rpassword){
-    echo "Passwords must match";
-   }else{
-
-
-
-       $password = md5($password);
-      $sql ="INSERT INTO `user`(`id`, `username`, `name`, `email`, `password`, `contact`, `avatar`, `date_joined`,`uType`) VALUES ('','$username','$name','$email','$password','$phone','$avatar','$now','4')";
-
-      $sql = mysqli_query($con,$sql);
-      if($sql){
-        echo "<script>alert('Registration Successful \n Please login to start'</script>";
-        header("location: ../index.php");
-      }else{
-        echo mysqli_error($con);
-      }
-
-   }
-
-} if(isset($_POST["loginBtn"])){
-    $username=$_POST["luname"];
-    $password=$_POST["lpass"];
-    $password=md5($password);
-
-    $sql = mysqli_query($con,"SELECT * FROM `user` WHERE `username`='$username' AND `password`='$password' AND `uType`='4'");
-    if(mysqli_num_rows($sql)>0){
-        while($row=mysqli_fetch_assoc($sql)){
-            $_SESSION["name"] =$row["name"];
-            $_SESSION["username"] = $row["username"];
-            $_SESSION["avatar"] = $row["avatar"];
-            $_SESSION["phone"] = $row["contact"];
-            $_SESSION["email"] = $row["email"];
-            $_SESSION["password"] = $row["password"];
-            $_SESSION["signature"] = md5($_SESSION["password"]);
-            $id=$row["id"];
-            $_SESSION["id"] = $id;
-            $activity = "logIn";
-            $through = activityLog($id,$activity);
-            
-                // echo $through;
-            if($through=="Success"){
-                header("location: ../home.php");
-            }
-
-        }
-    }else{
-        echo "<br/><br/><p style='width:40%; text-align:center; position:absolute;left:30%;top:30%' class='alert alert-danger'>We do not have this username and password match.<br/> 
-                 or maybe You don't have an account yet,\n";
-                echo "<br/><br/><a href=\"../index.php\">Back</a></p>";
-        // header("location: ../index.php");
-        echo mysqli_error($con);
-    }
-
-}else if(isset($_POST["addLandlord"])){
+ if(isset($_POST["addLandlord"])){
     $name = $_POST["name"];
     $uname = $_POST["uname"];
     $email = $_POST["email"];
@@ -100,7 +38,7 @@ if(isset($_POST["registerBtn"])){
     $sql = mysqli_query($con,"INSERT INTO `user`(`id`, `username`, `name`, `email`, `password`, `contact`, `avatar`, `date_joined`, `uType`) VALUES ('','$uname','$name','$email','$password','$tel','1','$now','3') ");
 
     if($sql){
-      $through = activityLog($id,"User3add");
+      $through = activityLog($id,"Added a landlord");
       if($through =="Success"){
 
           echo "<script>alert('User3 Addition Successful')</script>";
@@ -128,7 +66,7 @@ if(isset($_POST["registerBtn"])){
     $id =  $_SESSION["id"];
   $sql = mysqli_query($con,"INSERT INTO `apartment`(`id`, `name`, `region`, `district`, `town`, `hse_no`, `apo`, `description`, `digital_add`, `amount`, `contact_person`, `date_added`, `available`,`contract_type`,`p_type`,`currency`) VALUES ('','$name','$region','$district','$town','$hse_no','$apo','$description','$digital_add','$amount','$contact_person','$now','YES','$contract_type','$p_type','$currency')");
   if($sql){
-       $through = activityLog($id,"apartmentAdd");
+       $through = activityLog($id,"Added an apartment");
        if($through =="Success"){
 
           echo "<script>alert('Apartment Addition Successful')</script>";
@@ -154,7 +92,7 @@ else if(isset($_POST["passChange"])){
         $sql =mysqli_query($con,"UPDATE `user` SET `password`='$npass' WHERE `id`='$id'");
         if($sql){
             $_SESSION["password"]=$npass;
-            $activity = "Password Change";
+            $activity = "Changed Password";
 
             $through = activityLog($id,$activity);
             if($through=='Success'){
@@ -175,7 +113,7 @@ else if(isset($_POST["passChange"])){
     if($sql){
         $_SESSION["phone"] = $phone;
         $_SESSION["email"] = $email;
-        $activity = "Contact Update";
+        $activity = "Updated Contact Details";
         $through = activityLog($id,$activity);
         if($through =='Success'){
 

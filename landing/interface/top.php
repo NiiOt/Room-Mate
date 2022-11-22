@@ -80,16 +80,19 @@
                             <a href="index.php"  role="button" aria-haspopup="true">Home</a>
                             
                         </li>
-                        <li class="a"><a href="about.php">About</a></li>
+                        <li class="a"><a href="houses.php">Houses</a></li>
+                        <li class="a"><a href="apartments.php">Apartments</a></li>
+                        <li class="a"><a href="offices.php">Offices/Warehouses</a></li>
+                        <li class="a"><a href="agents.php">Agents</a></li>
                       
-                        <li class="c"><a href="careers.php">Careers</a></li>
+                        <li class="a"><a href="developers.php">Developers</a></li>
                          
 
-                        <li class="co"><a href="contact.php">Contact</a></li>
+                        <li class="a"><a href="contact.php">Contact</a></li>
 
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="dashboard/landlord/">Add your Property</a></li>
+                        <li><a target='_blank' href="../dashboard/landlord/">Add your Property</a></li>
                         <!-- <li class="active"><a href="r-add-property.html">Add Property</a></li> -->
                     </ul>
                 </div><!--/.nav-collapse -->
