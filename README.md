@@ -1,2 +1,2 @@
 # Room-Mate
-Mobile App for campus hostel registration
+Real estate up for finding property available for rent or sale
