@@ -102,15 +102,6 @@ if($_SESSION['name']==''){
                             </div>
                         </a>
 
-                        <a class="list-group-item media" href="#">
-                            <div class="pull-left">
-                                <img class="lgi-img" src="img/demo/profile-pics/6.jpg" alt="">
-                            </div>
-                            <div class="media-body">
-                                <div class="lgi-heading">Wendy Mitchell</div>
-                                <small class="lgi-text">Last seen 2 minutes ago</small>
-                            </div>
-                        </a>
                     </div>
                 </div> -->
             </aside>
